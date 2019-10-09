@@ -15,6 +15,7 @@ const App = ({
 }) => {
   const removeFeature = item => {
     // dispatch an action here to remove an item
+    removeItem(item)
   };
 
   const buyItem = item => {
@@ -26,7 +27,7 @@ const App = ({
     <div className="boxes">
       <div className="box">
         <Header car={car} />
-        <AddedFeatures car={car} />
+        <AddedFeatures car={car} removeFeature={removeFeature}/>
       </div>
       <div className="box">
         <AdditionalFeatures store={additionalFeatures} buyItem={buyItem}/>
@@ -48,6 +49,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    addItem
+    addItem,
+    removeItem
   }
 )(App);
